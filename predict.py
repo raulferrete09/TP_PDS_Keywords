@@ -19,7 +19,7 @@ def make_prediction(args):
                         'MagnitudeToDecibel':MagnitudeToDecibel})
     wav_paths = glob('{}/**'.format(args.src_dir), recursive=True)
     wav_paths = sorted([x.replace(os.sep, '/') for x in wav_paths if '.wav' in x])
-    classes = sorted(os.listdir('wavfile2'))
+    classes = sorted(os.listdir('Keywords'))
     labels = [os.path.split(x)[0].split('/')[-1] for x in wav_paths]
     le = LabelEncoder()
     y_true = le.fit_transform(labels)
@@ -54,12 +54,12 @@ def make_prediction(args):
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description='Audio Classification Training')
-    parser.add_argument('--model_fn', type=str, default='models/conv1d'
+    parser.add_argument('--model_fn', type=str, default='models1/conv2d'
                                                         '.h5',
                         help='model file to make predictions')
     parser.add_argument('--pred_fn', type=str, default='y_pred',
                         help='fn to write predictions in logs dir')
-    parser.add_argument('--src_dir', type=str, default='Alfredo_Test',
+    parser.add_argument('--src_dir', type=str, default='Keywords_Test',
                         help='directory containing wavfiles to predict')
     parser.add_argument('--dt', type=float, default=1.0,
                         help='time in seconds to sample audio')

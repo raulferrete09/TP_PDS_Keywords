@@ -104,14 +104,14 @@ def train(args):
               epochs=30, verbose=1,
               callbacks=[csv_logger, cp])
     print (tg)
-    model.save('models/conv2d.h5')
+    model.save('models1/conv2d.h5')
 
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description='Audio Classification Training')
     parser.add_argument('--model_type', type=str, default='conv2d',
                         help='model to run. i.e. conv1d, conv2d, lstm')
-    parser.add_argument('--src_root', type=str, default='clean',
+    parser.add_argument('--src_root', type=str, default='clean1',
                         help='directory of audio files in total duration')
     parser.add_argument('--batch_size', type=int, default=16,
                         help='batch size')
